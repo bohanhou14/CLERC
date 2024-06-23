@@ -1,4 +1,4 @@
-This is the repo for CLERC.
+This is the repo for CLERC [In-Progress].
 
 ### Building Passage-level Triples
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
