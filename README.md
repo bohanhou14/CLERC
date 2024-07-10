@@ -17,7 +17,7 @@ This is the repo for CLERC [In-Progress].
 ```
 @article{abe2024clerc,
   title={CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation},
-  author={Abe Bohan Hou, Orion Weller, Guanghui Qin, Eugene Yang, Dawn Lawrie, Nils Holzenberger, Andrew Blair-Stanek, Benjamin Van Durme},
+  author={Abe Bohan Hou and Orion Weller and Guanghui Qin and Eugene Yang and Dawn Lawrie and Nils Holzenberger and Andrew Blair-Stanek and Benjamin Van Durme},
   journal={ArXiv},
   year={2024},
   url={https://arxiv.org/pdf/2406.17186}
