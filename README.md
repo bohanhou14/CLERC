@@ -14,6 +14,7 @@ This is the repo for CLERC [In-Progress].
    `python pipeline.py build_triples TREC_PATH --qrels_path QRELS_PASSAGE_PATH`
 
 ## Cite CLERC
+```
 @article{abe2024clerc,
   title={CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation},
   author={Abe Bohan Hou, Orion Weller, Guanghui Qin, Eugene Yang, Dawn Lawrie, Nils Holzenberger, Andrew Blair-Stanek, Benjamin Van Durme},
@@ -21,3 +22,4 @@ This is the repo for CLERC [In-Progress].
   year={2024},
   url={https://arxiv.org/pdf/2406.17186}
 }
+```
