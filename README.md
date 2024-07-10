@@ -12,3 +12,12 @@ This is the repo for CLERC [In-Progress].
 7. Build a set of training triples with a trec file of highly ranked passages and a reranked passage-level qrels:
    
    `python pipeline.py build_triples TREC_PATH --qrels_path QRELS_PASSAGE_PATH`
+
+## Cite CLERC
+@article{abe2024clerc,
+  title={CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation},
+  author={Abe Bohan Hou, Orion Weller, Guanghui Qin, Eugene Yang, Dawn Lawrie, Nils Holzenberger, Andrew Blair-Stanek, Benjamin Van Durme},
+  journal={ArXiv},
+  year={2024},
+  url={https://arxiv.org/pdf/2406.17186}
+}
