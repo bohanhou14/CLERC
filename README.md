@@ -15,7 +15,7 @@ In this repo, we provide codes for replicating the curation process of CLERC dat
 ## Retrieval
 
 ## Generation
-Please refer to our paper for the formulation of task and README in the generation subdirectory (https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
+Please refer to our paper for the task formulation and README in the generation subdirectory (https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
 ## Cite CLERC
 ```
 @article{abe2024clerc,
