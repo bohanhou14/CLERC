@@ -21,9 +21,10 @@ In this repo, we provide codes for replicating the curation process of CLERC dat
 https://github.com/bohanhou14/CLERC/blob/main/retrieval/src/pipeline.py is the entrypoint to the curation of CLERC.
 
 It supports several tasks, and the order reflects how CLERC was constructed:
-- process_raw: process .jsonl.xz file from CAP into .tsv corpus (CLERC/doc)
-- build_collections: chunkify CLERC/doc with a sliding window into passage collection (CLERC/passage)
-- 
+1. process_raw: process .jsonl.xz file from CAP into .tsv corpus (CLERC/doc)
+2. build_collections: chunkify CLERC/doc with a sliding window into passage collection (CLERC/passage)
+3. build_queries: convert CLERC/doc into queries and also classify them according to direct/indirect, single-removed/all-removed --- Read our paper for details.
+4. filter_queries: identify & extract central citation sentence from the queries. This is done with the support of eyecite (https://github.com/freelawproject/eyecite)!
 
 ### Building Passage-level Triples
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
