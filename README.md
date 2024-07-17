@@ -3,7 +3,7 @@
 ## Introduction
 This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation built on Caselaw Access Project - [CAP](https://case.law). Feel free to read our paper at [ArXiv](https://arxiv.org/pdf/2406.17186).
 
-**You can also find our data stored at [HuggingFace](https://huggingface.co/datasets/jhu-clsp/CLERC/) and trained [BERT DPR](https://huggingface.co/jhu-clsp/BERT-DPR-CLERC-ft) and [LegalBERT DPR](https://huggingface.co/jhu-clsp/LegalBERT-DPR-CLERC-ft).**
+**You can also find our [Datasets](https://huggingface.co/datasets/jhu-clsp/CLERC/) and trained [BERT DPR](https://huggingface.co/jhu-clsp/BERT-DPR-CLERC-ft) and [LegalBERT DPR](https://huggingface.co/jhu-clsp/LegalBERT-DPR-CLERC-ft) stored on HuggingFace.**
 
 
 Our contributions in the paper are threefold:
