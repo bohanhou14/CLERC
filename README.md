@@ -15,6 +15,7 @@ Our contributions in the paper are threefold:
 In this repo, we provide codes for replicating the curation process of CLERC datasets as well as running retrieval and generation experiments. We will explain the two main subsets of CLERC, **retrieval** and **generation** separately.
 
 ## Retrieval
+
 ### Installation [TODO]
 
 ### Pipeline
@@ -24,9 +25,10 @@ It supports several tasks, and the order reflects how CLERC was constructed:
 1. process_raw: process .jsonl.xz file from CAP into .tsv corpus (CLERC/doc)
 2. build_collections: chunkify CLERC/doc with a sliding window into passage collection (CLERC/passage)
 3. build_queries: convert CLERC/doc into queries and also classify them according to direct/indirect, single-removed/all-removed --- Read our paper for details.
-4. filter_queries: identify & extract central citation sentence from the queries. This is done with the support of eyecite (https://github.com/freelawproject/eyecite)!
+4. filter_queries: identify & extract central citation sentence from the queries. This is done with the support of eyecite (kudos to https://github.com/freelawproject/eyecite)!
+5. 
 
-### Building Passage-level Triples
+#### Building Passage-level Triples
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
 2. To rerank the positive passages, build a collection consist of only positive passages of the train queries:
    
