@@ -2,11 +2,11 @@
 
 ## Environment Setup
 
-This codebase requires python >= 3.8. 
-To best performance, one should run the fine-tuning on machines with CUDA devices.
+This codebase requires Python >= 3.8. 
+One should run the fine-tuning on machines with CUDA devices for the best performance.
 Our experiments were done with 8 A100 GPU cards.
 
-Please follow the instruction on [pytorch.org](https://pytorch.org) to install the pytorch.
+Please follow the instructions on [pytorch.org](https://pytorch.org) to install the pytorch.
 The codes were tested on torch==2.3.1.
 
 The rest of the requirements are listed on requirements.txt.
@@ -15,8 +15,8 @@ The rest of the requirements are listed on requirements.txt.
 pip install -r requirements.txt
 ```
 
-Our experiments were done with Meta-Llama-3 model.
-You need to [obtain the permission from meta](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) to run the codebase.
+Our experiments were done with the Meta-Llama-3 model.
+You need to [obtain permission from meta](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) to run the codebase.
 
 ## Training and Prediction
 
@@ -38,8 +38,8 @@ The predictions will be saved in a folder beside the checkpoint file.
 
 ## Evaluation
 
-Evaluation script can be used for both zero-shot and fine-tuned results.
-The file should be of the following formats:
+The evaluation script can be used for both zero-shot and fine-tuned results.
+The output file should follow this format:
 ```json
 {
   "gen": "model generated text",
