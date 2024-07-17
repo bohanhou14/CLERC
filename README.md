@@ -27,7 +27,7 @@ It supports several tasks, and the order reflects how CLERC was constructed:
 3. **build_queries**: convert CLERC/doc into queries and also classify them according to direct/indirect, single-removed/all-removed --- Read our paper for details.
 4. **filter_queries**: identify & extract central citation sentence from the queries. This is done with the support of eyecite (kudos to https://github.com/freelawproject/eyecite)!
 5. **build_qrels**: standardize queries to MSMarco format and also provide the qrels for evaluating the queries (doc-level and passage-level)
-6. **build_pos_train_collection_rerank** and **build_rerank_triples**: explained in #Building-Passage-level-Triples 
+6. **build_pos_train_collection_rerank** and **build_rerank_triples**: explained in (#Building-Passage-level-Triples) 
 
 #### Building Passage-level Triples
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
