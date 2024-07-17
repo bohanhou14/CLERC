@@ -44,6 +44,15 @@ def read_qrels_doc(path):
             qrels[qid] = did
     return qrels
 
+def read_mapping(path):
+    mapping = {}
+    with open(path, "r") as f:
+        lines = f.readlines()
+        for line in tqdm(lines, desc='Reading mapping', total=len(lines)):
+            pid, did = line.strip().split()
+            mapping[pid] = did
+    return mapping
+
 def read_qrels_passage(path):
     qrels = {}
     with open(path, "r") as f:

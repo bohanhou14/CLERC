@@ -59,7 +59,13 @@ if __name__ == "__main__":
     parser.add_argument("--trec_path", type=str, nargs='+')
     args = parser.parse_args()
     trec_paths = args.trec_path
-    save_path = trec_paths[0].replace(".trec", "_aggregated_mapped.trec") if args.trec_path else args.tsv_path.replace(".tsv", "_aggregated_mapped.trec")
+    if args.trec_path and ".trec" in trec_paths[0]:
+        save_path = trec_paths[0].replace(".trec", "_aggregated.trec") 
+    elif args.tsv_path and ".tsv" in args.tsv_path:
+        save_path = args.tsv_path.replace(".tsv", "_aggregated_mapped.tsv")
+    elif args.tsv_path and ".txt" in args.tsv_path:
+        save_path = args.tsv_path.replace(".txt", "_aggregated_mapped.txt")
+        
     all_qids = {}
 
     if args.tsv_path and not args.trec_path:
