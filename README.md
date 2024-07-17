@@ -12,7 +12,10 @@ Our contributions in the paper are threefold:
 
 In this repo, we provide codes for replicating the curation process of CLERC datasets as well as running retrieval and generation experiments. We will explain the two main subsets of CLERC, **retrieval** and **generation** separately.
 
+## Retrieval
 
+## Generation
+Please refer to our paper for the formulation of task and README in the generation subdirectory (https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
 ## Cite CLERC
 ```
 @article{abe2024clerc,
