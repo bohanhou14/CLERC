@@ -1,5 +1,5 @@
 import argparse
-from data_utils import read_mapping, read_trec
+from CLERC.data.src.data_utils import read_mapping, read_trec
 from tqdm import tqdm
 from queue import PriorityQueue
 

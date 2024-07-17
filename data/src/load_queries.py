@@ -4,7 +4,7 @@ from tqdm import tqdm
 import pickle
 from time import time
 import re
-from data_utils import extract_citations, build_collection, match_by_token_overlap, clean_cstr
+from CLERC.data.src.data_utils import extract_citations, build_collection, match_by_token_overlap, clean_cstr
 import random
 import numpy as np
 fdq = chr(8220)

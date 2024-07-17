@@ -1,5 +1,5 @@
 import pandas as pd
-from data_utils import extract_citations, build_collection, match_by_token_overlap, clean_cstr
+from CLERC.data.src.data_utils import extract_citations, build_collection, match_by_token_overlap, clean_cstr
 import os
 from tqdm import trange
 import numpy as np

@@ -1,10 +1,8 @@
 import argparse
 import pandas as pd
 from tqdm import trange
-from data_utils import extract_citations, sread_tsv
+from CLERC.data.src.data_utils import extract_citations, sread_tsv
 from matplotlib import pyplot as plt
-
-
 
 def analyze_citation_density(args):
     data = pd.read_csv(args.data, sep='\t', names=['did', 'text'])
@@ -13,7 +11,6 @@ def analyze_citation_density(args):
         case = data.iloc[i]
         text = case['text']
         total_len = len(text)
-        total_word_len = len(text.split(" "))
         paragraphs = text.split('\n')
         p_middle = [len(paragraph) // 2 for paragraph in paragraphs]
         p_start = []

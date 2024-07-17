@@ -3,7 +3,7 @@ import json
 import re
 from tqdm import trange, tqdm
 from nltk.tokenize import sent_tokenize
-from data_utils import read_tsv, extract_citations, clean_cstr
+from CLERC.data.src.data_utils import read_tsv, extract_citations, clean_cstr
 from transformers import AutoTokenizer
 import pandas as pd
 import os
@@ -36,7 +36,7 @@ def build_doc_collection(data_path = "/srv/local1/bhou4/data.jsonl.xz", majority
                 case_bodies.append(" ".join(body))
     return case_ids, case_bodies, citations
 
-def build_citations_tsv(data_path="/srv/local1/bhou4/data.jsonl.xz", save_dir=".", majority_only=False):
+def build_citations_tsv(data_path="data.jsonl.xz", save_dir=".", majority_only=False):
     case_ids, case_bodies, citations = build_doc_collection(data_path = data_path, majority_only=majority_only)
     # with open(save_dir + "cites2did.pkl", 'rb') as f:
     #     keys = case_ids
@@ -142,33 +142,5 @@ def build_passage_collection(data_path, save_path = "/srv/local1/bhou4/case.law.
     data = pd.DataFrame(data=d)
     save_path = save_path.replace('passages', 'pid2did')
     data.to_csv(save_path, sep='\t', header=False, index=False)
-    # # save the total_passages_cites
-    # with open(save_path.replace('.tsv', '-eyecite.pkl'), 'wb') as f:
-    #     pickle.dump(total_passages_cites, f)
 
-# case_ids, case_bodies = build_collection()
-# breakpoint()
-# case_law = read_tsv("/srv/local1/bhou4/case.law.tsv", names = ['doc_id', 'text'])
-# case_ids = case_law['doc_id'].tolist()
-# case_bodies = case_law['text'].tolist()
-# # breakpoint()
-# doc_ids, passages = build_passages_sw(case_ids, case_bodies)
-# pids = list(range(len(doc_ids)))
 
-# new_pids = []
-# new_passages = []
-# new_doc_ids = []
-# # breakpoint()
-# for did, pid, passage in zip(doc_ids, pids, passages):
-#     if did != None and pid != None and passage != None:
-#         new_doc_ids.append(did)
-#         new_passages.append(passage)
-#         new_pids.append(pid)
-
-# d = {'pid': new_pids, 'text': new_passages}
-# data = pd.DataFrame(data=d)
-# data.to_csv('/srv/local1/bhou4/case.law.passages-sw.tsv', sep = '\t', header=False, index=False)
-
-# d = {'pid': new_pids, 'doc_id': new_doc_ids}
-# data = pd.DataFrame(data=d)
-# data.to_csv('/srv/local1/bhou4/pid2did-sw.tsv', sep='\t', header=False, index=False)

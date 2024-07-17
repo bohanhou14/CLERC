@@ -1,5 +1,5 @@
 import sys
-from data_utils import sread_tsv
+from CLERC.data.src.data_utils import sread_tsv
 
 if __name__ == '__main__':
     # read in one argument for all the queries

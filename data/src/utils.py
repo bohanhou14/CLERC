@@ -1,5 +1,5 @@
 import argparse
-from data_utils import sread_tsv
+from CLERC.data.src.data_utils import sread_tsv
 
 def shorten_tsv(data, k):
     qids, texts = sread_tsv(data)

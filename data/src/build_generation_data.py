@@ -2,7 +2,7 @@ import argparse
 import pandas as pd
 from tqdm import trange
 import tqdm
-from data_utils import extract_citations, sread_tsv
+from CLERC.data.src.data_utils import extract_citations, sread_tsv
 from matplotlib import pyplot as plt
 import os
 import ast

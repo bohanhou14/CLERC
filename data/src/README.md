@@ -1,6 +1,18 @@
-This is the repo for CLERC [In-Progress].
+# Official Repo for CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation
 
-### Building Passage-level Triples
+## Cite CLERC
+```
+@article{abe2024clerc,
+  title={CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation},
+  author={Abe Bohan Hou and Orion Weller and Guanghui Qin and Eugene Yang and Dawn Lawrie and Nils Holzenberger and Andrew Blair-Stanek and Benjamin Van Durme},
+  journal={ArXiv},
+  year={2024},
+  url={https://arxiv.org/pdf/2406.17186}
+}
+```
+
+
+## Building Passage-level Triples
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
 2. To rerank the positive passages, build a collection consist of only positive passages of the train queries:
    

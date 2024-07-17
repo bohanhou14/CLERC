@@ -38,9 +38,9 @@ def find_all_p(text, p):
     for m in re.finditer(p, text):
         res.append((m.start(), m.end()))
     return res
+
 # text = "Matsushita Elec. Indus. Co. v. Zenith Radio Corp.,  475U.S.574 , 586-87, 106 S.Ct. 1348, 89 L.Ed.2d 538 (1986)."
 # citation = "106 S.Ct. 1348"
-
 # sliding window compare the first 2 chars to determine if it is an abbreviation
 def is_abbr(abbr_words, full_words):
     is_abbrev = True
@@ -280,52 +280,7 @@ def classify_chained_quote(text, big_window=15, small_window = 10):
             return 1
     return 0, ""
 
-# def classify_direct_quote(text, big_window=200, small_window=100):
-#     mid = len(text) // 2 # because the middle of the query is the central citation
-#     # only search the left half of the text
-#     def find_all_p(text, p):
-#         res = []
-#         for m in re.finditer(p, text):
-#             res.append((m.start(), m.end()))
-#         return res
-#     bleft = mid-big_window
-#     bright = mid+big_window
-#     sleft = mid-small_window
-#     sright = mid+small_window
-#     def in_interval(num, start, end):
-#         return (num >= start) and (num <= end)
-#     p = f'(?<={fdq})(.*?)(?={bdq})'
-#     quoted_pos = find_all_p(text, p)
-#     most_likely_candidate = ""
-#     confidence = -1
-#     for pos in quoted_pos:
-#         # least likely to be a direct quote
-#         cand = text[pos[0]-1:pos[1]+1]
-#         if len(cand.split(" ")) <= 5:
-#             continue
-#         if in_interval(pos[0], sleft, mid) and in_interval(pos[1], mid, sright):
-#             most_likely_candidate = cand
-#             confidence = 4
-#             break
-#         elif in_interval(pos[0], mid, bright):
-#             if confidence < 1:
-#                 most_likely_candidate = cand
-#                 confidence = 1
-#         elif (in_interval(pos[0], bleft, mid) and in_interval(pos[1], bleft, mid)) or (in_interval(pos[0], mid, bright) and in_interval(pos[1], mid, bright)):
-#             if confidence < 3:
-#                 most_likely_candidate = cand
-#                 confidence = 3
-#         elif in_interval(pos[0], bleft, mid) and in_interval(pos[1], mid, bright):
-#             if confidence < 4:
-#                 most_likely_candidate = cand
-#                 confidence = 4
-#     if most_likely_candidate != "":
-#         return 1, most_likely_candidate
-#     else:
-#         return 0, most_likely_candidate
-
 def classify_direct_quote(text, cite, window=150):
-
     # in case there are multiple cites, we take the only closest to the center of the text
     mid = len(text) // 2
     # regex find multiple cites

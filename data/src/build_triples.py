@@ -1,6 +1,6 @@
 import argparse
 from tqdm import tqdm, trange
-from data_utils import sread_tsv, read_qrels_doc, read_did2pid, read_trec, read_qrels_passage
+from CLERC.data.src.data_utils import sread_tsv, read_qrels_doc, read_did2pid, read_trec, read_qrels_passage
 
 def build_pos_train_collection_rerank(passage_collection_path, did2pid_path, qrels_doc_path):
     pids, texts = sread_tsv(passage_collection_path)
