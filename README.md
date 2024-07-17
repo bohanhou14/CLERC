@@ -1,7 +1,14 @@
 # Official Repo for CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation
 
 ## Introduction
-This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation. Feel free to read our paper at: https://arxiv.org/pdf/2406.17186
+This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation built on Caselaw Access Project (CAP) (case.law). Feel free to read our paper at: https://arxiv.org/pdf/2406.17186
+
+Our contributions are three-fold:
+1. Through working with legal professionals, we provide a formulation of legal case retrieval and generation tasks that balance the needs and perspectives of legal professionals with computational feasibility.
+
+2. We build an open-source pipeline for trans- forming CAP into a large-scale, high-quality dataset designed for training and evaluating models on legal IR and RAG tasks.
+
+3. We conduct a comprehensive evaluation of long-context case retrieval and retrieval- augmented legal analysis generation on CLERC with state-of-the-art methods, reveal- ing that IR models struggle to retrieve relevant documents and LLMs frequently hallucinate.
 
 ## Cite CLERC
 ```
