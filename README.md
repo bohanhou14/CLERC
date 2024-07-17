@@ -43,8 +43,10 @@ It supports several tasks, and the order reflects how CLERC was constructed:
    `python pipeline.py build_triples TREC_PATH --qrels_path QRELS_PASSAGE_PATH`
 
 ### Retrieval Experiments
-- BM25: we used the scripts & commands provided in [Tevatron](https://github.com/texttron/tevatron)
-- ColBERT: we use 
+- BM25: we used the scripts & commands provided in [Pyserini](https://github.com/castorini/pyserini)
+- ColBERT: we use [ColBERT-X](https://github.com/hltcoe/ColBERT-X)
+- [Long-context ColBERT] (https://huggingface.co/jinaai/jina-colbert-v1-en)
+- Training DPR: [Tevatron](https://github.com/texttron/tevatron)
 ## Generation
 Please refer to our paper for the task formulation and [README in the generation subdirectory](https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
 ## Cite CLERC
