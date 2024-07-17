@@ -7,6 +7,7 @@ from lightning.pytorch.trainer import Trainer
 from lightning.pytorch import loggers as pl_loggers
 from lightning.pytorch.strategies import DDPStrategy
 from lightning.pytorch.plugins import DeepSpeedPrecision
+from lightning.pytorch.utilities.deepspeed import convert_zero_checkpoint_to_fp32_state_dict
 
 from legal_generation.modeling.ln_model import ReportGenerationModel
 from legal_generation.data_io.clerc import load_data
@@ -25,8 +26,8 @@ def get_save_path(args):
 
 def main():
     parser = ArgumentParser()
-    parser.add_argument('action', choices=['train', 'test'])
-    parser.add_argument('--cache', default=os.path.join(os.environ.get('HOME'), 'fullattn'))
+    parser.add_argument('action', choices=['train', 'predict'])
+    parser.add_argument('--cache', default='./clerc_cache')
     parser.add_argument('--pretrained', default='meta-llama/Meta-Llama-3-8B-Instruct')
     parser.add_argument('--lr', default=5e-5, type=float)
     parser.add_argument('--warmup', default=2000, type=int)
@@ -81,7 +82,7 @@ def main():
         gpu_kwargs = {'accelerator': 'cpu'}
 
     trainer = Trainer(
-        log_every_n_steps=20, use_distributed_sampler=gpu_kwargs['devices'] > 1, gradient_clip_val=.8,
+        log_every_n_steps=20, use_distributed_sampler=args.n_gpu > 1, gradient_clip_val=.8,
         gradient_clip_algorithm='norm', max_epochs=128, logger=logger, enable_progress_bar=True,
         callbacks=callbacks, accumulate_grad_batches=args.acc, check_val_every_n_epoch=1,
         val_check_interval=args.check_interval, **gpu_kwargs,
@@ -93,16 +94,21 @@ def main():
             max_new=args.max_new
         )
     else:
+        if os.path.isdir(args.ckpt):
+            new_ckpt_path = args.ckpt.replace('.ckpt', '.ln.ckpt')
+            convert_zero_checkpoint_to_fp32_state_dict(args.ckpt, new_ckpt_path)
+            args.ckpt = new_ckpt_path
         model = ReportGenerationModel.load_from_checkpoint(args.ckpt, strict=False)
 
-    train_dl, val_dl = load_data(
+    train_dl, test_dl = load_data(
         bsz=1, pretrained=args.pretrained, max_length=args.max_length, shuffle=True, use_ref=args.use_ref
     )
     if args.action == 'train':
         model.train()
-        trainer.fit(model, train_dl, val_dl)
-    elif args.action == 'test':
-        trainer.predict(model, val_dl)
+        trainer.fit(model, train_dl, test_dl)
+        trainer.predict(model, test_dl)
+    elif args.action == 'predict':
+        trainer.predict(model, test_dl)
 
 
 if __name__ == '__main__':

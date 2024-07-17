@@ -73,27 +73,13 @@ class ClercDataset(LazyDataset, LazyTokenizer):
 def collate_fn(batch):
     def pad_seqs(seqs):
         lengths = torch.tensor(list(map(len, seqs)))
-        ml = lengths.max()
+        ml = lengths.max().item()
         mask = torch.arange(ml).unsqueeze(0).expand(len(seqs), -1) < lengths.unsqueeze(1)
         ids = [seq + [0] * (ml-len(seq)) for seq in seqs]
         return torch.tensor(ids), mask
 
     ret = dict()
-    if batch[0]['src_input_ids'] is not None:
-        segmented = not isinstance(batch[0]['src_input_ids'][0], int)
-        if segmented:
-            n_seg = [len(item['src_input_ids']) for item in batch]
-            seg_range = torch.arange(max(n_seg) * len(batch)).reshape(len(batch), max(n_seg))
-            ret['segment_map'] = torch.cat([seg_range[:ns] for seg_range, ns in zip(seg_range, n_seg)], dim=0)
-            ret['n_segment'] = n_seg
-            ret['src_input_ids'], ret['src_attention_mask'] = pad_seqs(
-                sum([item['src_input_ids'] for item in batch], [])
-            )
-        else:
-            ret['src_input_ids'], ret['src_attention_mask'] = pad_seqs([item['src_input_ids'] for item in batch])
-    else:
-        ret['src_input_ids'], ret['src_attention_mask'] = None, None
-    ret['tgt_input_ids'], ret['tgt_attention_mask'] = pad_seqs([item['tgt_input_ids'] for item in batch])
+    ret['input_ids'], ret['attention_mask'] = pad_seqs([item['tgt_input_ids'] for item in batch])
     if 'skip' in batch[0]:
         ret['skip'] = torch.tensor([inp['skip'] for inp in batch])
     if 'meta' in batch[0]:

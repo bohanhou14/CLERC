@@ -46,19 +46,21 @@ class ReportGenerationModel(LightningModule):
         return model_out
 
     def training_step(self, batch, batch_idx):
-        model_out = self.transformer_forward(batch['tgt_input_ids'], batch['tgt_attention_mask'], batch['skip'])
-        self.log('loss', model_out.loss, prog_bar=True)
+        bsz = batch['input_ids'].shape[0]
+        model_out = self.transformer_forward(batch['input_ids'], batch['attention_mask'], batch['skip'])
+        self.log('loss', model_out.loss, prog_bar=True, batch_size=bsz)
         return model_out.loss
 
     def validation_step(self, batch, batch_idx):
-        model_out = self.transformer_forward(batch['tgt_input_ids'], batch['tgt_attention_mask'], batch['skip'])
-        self.log('dev_loss', model_out.loss, prog_bar=True, sync_dist=True)
+        bsz = batch['input_ids'].shape[0]
+        model_out = self.transformer_forward(batch['input_ids'], batch['attention_mask'], batch['skip'])
+        self.log('dev_loss', model_out.loss, prog_bar=True, sync_dist=True, batch_size=bsz)
 
     def predict_step(self, batch, batch_idx):
-        bsz = batch['tgt_input_ids'].size(0)
+        bsz = batch['input_ids'].size(0)
         ret = []
         for i in range(bsz):
-            input_ids = batch['tgt_input_ids'][i][batch['tgt_attention_mask'][i]][:batch['skip'][i]]
+            input_ids = batch['input_ids'][i][batch['attention_mask'][i]][:batch['skip'][i]]
             model_gen = self.lora_model.generate(input_ids=input_ids[None, :], max_new_tokens=self.max_new)
             gen = model_gen[0][len(input_ids):].cpu().tolist()
             ret.append(gen)
