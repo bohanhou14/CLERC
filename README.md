@@ -1,5 +1,8 @@
 # Official Repo for CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation
 
+## Introduction
+This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation. Feel free to read our paper at: https://arxiv.org/pdf/2406.17186
+
 ## Cite CLERC
 ```
 @article{abe2024clerc,
@@ -25,13 +28,3 @@
    
    `python pipeline.py build_triples TREC_PATH --qrels_path QRELS_PASSAGE_PATH`
 
-## Cite CLERC
-```
-@article{abe2024clerc,
-  title={CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation},
-  author={Abe Bohan Hou and Orion Weller and Guanghui Qin and Eugene Yang and Dawn Lawrie and Nils Holzenberger and Andrew Blair-Stanek and Benjamin Van Durme},
-  journal={ArXiv},
-  year={2024},
-  url={https://arxiv.org/pdf/2406.17186}
-}
-```
