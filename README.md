@@ -19,7 +19,7 @@ In this repo, we provide codes for replicating the curation process of CLERC dat
 ### Installation [TODO]
 
 ### Pipeline
-retrieval/src/pipeline.py is the entrypoint to the curation of CLERC.
+`retrieval/src/pipeline.py` is the entrypoint to the curation of CLERC.
 
 It supports several tasks, and the order reflects how CLERC was constructed:
 1. **process_raw**: process .jsonl.xz file from CAP into .tsv corpus (CLERC/doc)
