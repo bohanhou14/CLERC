@@ -3,7 +3,8 @@
 ## Introduction
 This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation built on Caselaw Access Project - [CAP](https://case.law). Feel free to read our paper at [ArXiv](https://arxiv.org/pdf/2406.17186).
 
-**You can also find our data stored at [HuggingFace](https://huggingface.co/datasets/jhu-clsp/CLERC/).**
+**You can also find our data stored at [HuggingFace](https://huggingface.co/datasets/jhu-clsp/CLERC/) and trained [BERT DPR](https://huggingface.co/jhu-clsp/BERT-DPR-CLERC-ft) and [LegalBERT DPR](https://huggingface.co/jhu-clsp/LegalBERT-DPR-CLERC-ft).**
+
 
 Our contributions in the paper are threefold:
 1. Through working with legal professionals, we provide a formulation of legal case retrieval and generation tasks that balance the needs and perspectives of legal professionals with computational feasibility.
@@ -27,10 +28,9 @@ It supports several tasks, and the order reflects how CLERC was constructed:
 3. **build_queries**: convert CLERC/doc into queries and also classify them according to direct/indirect, single-removed/all-removed --- Read our paper for details.
 4. **filter_queries**: identify & extract central citation sentence from the queries. This is done with the support of [eyecite](https://github.com/freelawproject/eyecite)!
 5. **build_qrels**: standardize queries to MSMarco format and also provide the qrels for evaluating the queries (doc-level and passage-level)
-6. **build_pos_train_collection_rerank** and **build_rerank_triples**: explained in [here](#Building-Passage-level-Triples). 
+6. **build_pos_train_collection_rerank** and **build_rerank_triples**: explained in [here](#Building-Passage-level-Triples). No need to follow if you are not training your own model.
 
 #### Building Passage-level Triples
-The trained [BERT DPR](https://huggingface.co/jhu-clsp/BERT-DPR-CLERC-ft) and [LegalBERT DPR](https://huggingface.co/jhu-clsp/LegalBERT-DPR-CLERC-ft)
 1. Build a set of queries used for training, make sure that it is not contaminated by `select_train.py`
 2. To rerank the positive passages, build a collection consist of only positive passages of the train queries:
    
