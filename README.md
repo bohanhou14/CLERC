@@ -1,7 +1,7 @@
 # Official Repo for CLERC: A Dataset for Legal Case Retrieval and Retrieval-Augmented Analysis Generation
 
 ## Introduction
-This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation built on Caselaw Access Project (CAP) (kudos to https://case.law !). Feel free to read our paper at: https://arxiv.org/pdf/2406.17186
+This repo supports the development of CLERC, a dataset for legal case retrieval and retrieval-augmented analysis generation built on Caselaw Access Project ([CAP])(https://case.law). Feel free to read our paper at: https://arxiv.org/pdf/2406.17186
 
 **You can also find our data stored at https://huggingface.co/datasets/jhu-clsp/CLERC/**
 
@@ -19,13 +19,13 @@ In this repo, we provide codes for replicating the curation process of CLERC dat
 ### Installation [TODO]
 
 ### Pipeline
-`retrieval/src/pipeline.py` is the entrypoint to the curation of CLERC.
+[pipeline.py](https://github.com/bohanhou14/CLERC/blob/main/retrieval/src/pipeline.py) is the entrypoint to the curation of CLERC.
 
 It supports several tasks, and the order reflects how CLERC was constructed:
 1. **process_raw**: process .jsonl.xz file from CAP into .tsv corpus (CLERC/doc)
 2. **build_collections**: chunkify CLERC/doc with a sliding window into passage collection (CLERC/passage)
 3. **build_queries**: convert CLERC/doc into queries and also classify them according to direct/indirect, single-removed/all-removed --- Read our paper for details.
-4. **filter_queries**: identify & extract central citation sentence from the queries. This is done with the support of eyecite (kudos to https://github.com/freelawproject/eyecite)!
+4. **filter_queries**: identify & extract central citation sentence from the queries. This is done with the support of [eyecite](https://github.com/freelawproject/eyecite)!
 5. **build_qrels**: standardize queries to MSMarco format and also provide the qrels for evaluating the queries (doc-level and passage-level)
 6. **build_pos_train_collection_rerank** and **build_rerank_triples**: explained in [here](#Building-Passage-level-Triples). 
 
@@ -45,7 +45,7 @@ It supports several tasks, and the order reflects how CLERC was constructed:
 ### Retrieval Experiments
 
 ## Generation
-Please refer to our paper for the task formulation and README in the generation subdirectory (https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
+Please refer to our paper for the task formulation and [README in the generation subdirectory](https://github.com/bohanhou14/CLERC/blob/main/generation/README.md)
 ## Cite CLERC
 ```
 @article{abe2024clerc,
