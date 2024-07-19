@@ -17,7 +17,10 @@ In this repo, we provide codes for replicating the curation process of CLERC dat
 
 ## Retrieval
 
-### Installation [TODO]
+### Installation 
+1. Create a python environment: `python -m venv clerc-ret`
+2. Activate: `source clerc-ret/bin/activate`
+2. `pip install -r requirements`
 
 ### Pipeline
 [pipeline.py](https://github.com/bohanhou14/CLERC/blob/main/retrieval/src/pipeline.py) is the entrypoint to the curation of CLERC.
